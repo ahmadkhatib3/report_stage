@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Figures - Rapport de stage CMA CGM Tripoli</title>
+<link rel="stylesheet" href="figures.css">
+</head>
+<body>
+
+<h1>Figures du rapport de stage</h1>
+<p class="subtitle">CMA CGM Tripoli &mdash; Departement IT</p>
+
+<!-- ============================================================ -->
+<!-- Figure 1 : Gantt global du stage (8 semaines)                -->
+<!-- ============================================================ -->
+<div class="section-label">Chapitre 1</div>
+<div class="figure">
+  <div class="figure-title">Diagramme de Gantt &mdash; Deroulement global du stage (8 semaines)</div>
+
+  <div class="gantt" style="--divisions:8;">
+    <div class="gantt-row">
+      <div class="gantt-label">Integration / formation</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-gray" style="left:0%; width:6.25%;"></div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label">Diagnostic terminaux Getac</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-teal" style="left:0%; width:25%;">2.0 sem.</div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label">Reorganisation cablage salle serveur</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-red" style="left:25%; width:18.75%;">1.5 sem.</div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label">Remplacement batteries UPS</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-red" style="left:43.75%; width:6.25%;"></div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label">Installation controle acces facial</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-red" style="left:50%; width:6.25%;"></div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label">Mise a jour et config. Getac (suite)</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-teal" style="left:56.25%; width:25%;">2.0 sem.</div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label">Support IT general</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-amber" style="left:0%; width:100%;">8.0 sem.</div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label">Finalisation et bilan</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-purple" style="left:81.25%; width:18.75%;">1.5 sem.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gantt-axis">
+    <div></div>
+    <div class="gantt-axis-track">
+      <span class="gantt-axis-tick" style="left:0%;">Debut</span>
+      <span class="gantt-axis-tick" style="left:12.5%;">S1</span>
+      <span class="gantt-axis-tick" style="left:25%;">S2</span>
+      <span class="gantt-axis-tick" style="left:37.5%;">S3</span>
+      <span class="gantt-axis-tick" style="left:50%;">S4</span>
+      <span class="gantt-axis-tick" style="left:62.5%;">S5</span>
+      <span class="gantt-axis-tick" style="left:75%;">S6</span>
+      <span class="gantt-axis-tick" style="left:87.5%;">S7</span>
+      <span class="gantt-axis-tick" style="left:100%; transform:translateX(-100%);">S8</span>
+    </div>
+  </div>
+  <div class="gantt-axis-title">Semaines de stage</div>
+
+  <div class="gantt-legend">
+    <span><span class="swatch bar-gray"></span>Integration</span>
+    <span><span class="swatch bar-teal"></span>Projet Getac</span>
+    <span><span class="swatch bar-red"></span>Autres projets (cablage, UPS, faceprint)</span>
+    <span><span class="swatch bar-amber"></span>Support IT (continu)</span>
+    <span><span class="swatch bar-purple"></span>Finalisation</span>
+  </div>
+
+  <div class="caption"><b>Figure 1.</b> Diagramme de Gantt du deroulement global du stage (8 semaines).</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Figure 2 : Gantt projet Getac                                 -->
+<!-- ============================================================ -->
+<div class="section-label">Chapitre 2 &mdash; Projet Getac</div>
+<div class="figure">
+  <div class="figure-title">Diagramme de Gantt &mdash; Projet terminaux Getac (UX10G2)</div>
+
+  <div class="gantt" style="--divisions:8;">
+    <div class="gantt-row">
+      <div class="gantt-label">Diagnostic general des terminaux</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-teal" style="left:12.5%; width:87.5%;">7.0 sem.</div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label">Cas 1 : reparation BCD (10 jours)</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-coral" style="left:62.5%; width:25%;">2.0 sem.</div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label">Cas 2 : navigateur Edge par defaut</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-coral label-outside" style="left:56.25%; width:6.25%;">
+          <span class="tag">0.5 sem.</span>
+        </div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label">Mises a jour Windows / pilotes</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-amber" style="left:50%; width:37.5%;">3.0 sem.</div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label">Configuration finale et deploiement</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-purple" style="left:56.25%; width:12.5%;">1.0 sem.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gantt-axis">
+    <div></div>
+    <div class="gantt-axis-track">
+      <span class="gantt-axis-tick" style="left:0%;">Debut</span>
+      <span class="gantt-axis-tick" style="left:12.5%;">S1</span>
+      <span class="gantt-axis-tick" style="left:25%;">S2</span>
+      <span class="gantt-axis-tick" style="left:37.5%;">S3</span>
+      <span class="gantt-axis-tick" style="left:50%;">S4</span>
+      <span class="gantt-axis-tick" style="left:62.5%;">S5</span>
+      <span class="gantt-axis-tick" style="left:75%;">S6</span>
+      <span class="gantt-axis-tick" style="left:87.5%;">S7</span>
+      <span class="gantt-axis-tick" style="left:100%; transform:translateX(-100%);">S8</span>
+    </div>
+  </div>
+  <div class="gantt-axis-title">Semaines du projet Getac</div>
+
+  <div class="gantt-legend">
+    <span><span class="swatch bar-teal"></span>Diagnostic</span>
+    <span><span class="swatch bar-coral"></span>Etudes de cas</span>
+    <span><span class="swatch bar-amber"></span>Mises a jour</span>
+    <span><span class="swatch bar-purple"></span>Config. finale</span>
+  </div>
+
+  <div class="caption"><b>Figure 2.</b> Diagramme de Gantt du projet de deploiement des terminaux Getac UX10G2.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Figure 3 : Sequence de demarrage UEFI (SVG natif)             -->
+<!-- ============================================================ -->
+<div class="figure">
+  <svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" class="flow-arrow" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+
+    <rect class="node-box uefi" x="160" y="20" width="360" height="56"/>
+    <text class="node-title uefi" x="340" y="42">1. Micrologiciel UEFI</text>
+    <text class="node-sub uefi" x="340" y="62">Recherche un disque de demarrage</text>
+    <line class="flow-arrow" x1="340" y1="76" x2="340" y2="112" marker-end="url(#arrow)"/>
+
+    <rect class="node-box uefi" x="160" y="112" width="360" height="56"/>
+    <text class="node-title uefi" x="340" y="134">2. Partition systeme EFI</text>
+    <text class="node-sub uefi" x="340" y="154">Contient bootmgr.efi</text>
+    <line class="flow-arrow" x1="340" y1="168" x2="340" y2="204" marker-end="url(#arrow)"/>
+
+    <rect class="node-box uefi" x="160" y="204" width="360" height="56"/>
+    <text class="node-title uefi" x="340" y="226">3. Magasin BCD</text>
+    <text class="node-sub uefi" x="340" y="246">Boot Configuration Data</text>
+    <line class="flow-arrow" x1="340" y1="260" x2="340" y2="296" marker-end="url(#arrow)"/>
+
+    <rect class="node-box windows" x="160" y="296" width="360" height="56"/>
+    <text class="node-title windows" x="340" y="318">4. winload.efi</text>
+    <text class="node-sub windows" x="340" y="338">Charge le noyau Windows (C:\Windows)</text>
+    <line class="flow-arrow" x1="340" y1="352" x2="340" y2="388" marker-end="url(#arrow)"/>
+
+    <rect class="node-box windows" x="160" y="388" width="360" height="56"/>
+    <text class="node-title windows" x="340" y="410">5. Bureau Windows</text>
+    <text class="node-sub windows" x="340" y="430">Systeme demarre avec succes</text>
+
+    <text class="flow-note" x="340" y="470">Une panne a l'etape 3 (BCD manquant) ou 4 (winload.efi</text>
+    <text class="flow-note" x="340" y="488">inaccessible) bloque tout le demarrage</text>
+  </svg>
+  <div class="caption"><b>Figure 3.</b> Sequence de demarrage Windows en UEFI.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Figure 4 : Repartition des partitions (SVG natif)             -->
+<!-- ============================================================ -->
+<div class="figure">
+  <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+    <rect class="container-box" x="40" y="20" width="600" height="210"/>
+    <text class="container-title" x="60" y="48">Disque interne (GPT)</text>
+
+    <rect class="node-box uefi" x="60" y="80" width="80" height="120"/>
+    <text class="node-title uefi" x="100" y="120">EFI</text>
+    <text class="node-sub uefi" x="100" y="140">260 Mo</text>
+
+    <rect class="node-box windows" x="156" y="80" width="260" height="120"/>
+    <text class="node-title windows" x="286" y="120">Windows (C:)</text>
+    <text class="node-sub windows" x="286" y="140">218 Go, systeme installe</text>
+
+    <rect class="node-box neutral" x="432" y="80" width="80" height="120"/>
+    <text class="node-title neutral" x="472" y="120">WinRE</text>
+    <text class="node-sub neutral" x="472" y="140">Recuperation</text>
+
+    <rect class="node-box neutral" x="528" y="80" width="80" height="120"/>
+    <text class="node-title neutral" x="568" y="120">Reset</text>
+    <text class="node-sub neutral" x="568" y="140">Reinit. usine</text>
+  </svg>
+  <div class="caption"><b>Figure 4.</b> Repartition des partitions du disque du terminal Getac.</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- Figure 5 : Gantt projet UPS                                   -->
+<!-- ============================================================ -->
+<div class="section-label">Chapitre 2 &mdash; Projet UPS</div>
+<div class="figure">
+  <div class="figure-title">Diagramme de Gantt &mdash; Projet de remplacement des UPS</div>
+
+  <div class="gantt" style="--divisions:3;">
+    <div class="gantt-row">
+      <div class="gantt-label">Diagnostic via logiciel de supervision</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-teal" style="left:0%; width:33.33%;">1.0 j</div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label">Remplacement batteries - salle serveur</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-amber" style="left:33.33%; width:50%;">1.5 j</div>
+      </div>
+    </div>
+    <div class="gantt-row">
+      <div class="gantt-label">Remplacement batteries - salle electrique</div>
+      <div class="gantt-track">
+        <div class="gantt-bar bar-amber" style="left:66.67%; width:33.33%;">1.0 j</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gantt-axis">
+    <div></div>
+    <div class="gantt-axis-track">
+      <span class="gantt-axis-tick" style="left:0%;">Debut</span>
+      <span class="gantt-axis-tick" style="left:33.33%;">J1</span>
+      <span class="gantt-axis-tick" style="left:66.67%;">J2</span>
+      <span class="gantt-axis-tick" style="left:100%; transform:translateX(-100%);">J3</span>
+    </div>
+  </div>
+  <div class="gantt-axis-title">Jours du projet UPS</div>
+
+  <div class="gantt-legend">
+    <span><span class="swatch bar-teal"></span>Diagnostic</span>
+    <span><span class="swatch bar-amber"></span>Remplacement batteries</span>
+  </div>
+
+  <div class="caption"><b>Figure 5.</b> Diagramme de Gantt du projet de remplacement des UPS.</div>
+</div>
+
+</body>
+</html>

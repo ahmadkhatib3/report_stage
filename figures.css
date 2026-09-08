@@ -1,0 +1,242 @@
+/* ---------- Base ---------- */
+:root {
+  --ink: #1f2430;
+  --sub: #5a6472;
+  --line: #e3e6ea;
+  --bg: #fbfbfc;
+  --card: #ffffff;
+  --accent: #0f6e56;
+
+  --teal: #0f6e56;
+  --coral: #993c1d;
+  --amber: #854f0b;
+  --purple: #3c3489;
+  --gray: #888780;
+  --red: #b23a48;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 40px 24px 80px;
+  background: var(--bg);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+p.subtitle {
+  text-align: center;
+  color: var(--sub);
+  margin-top: 0;
+  margin-bottom: 48px;
+  font-size: 0.95rem;
+}
+
+.section-label {
+  max-width: 920px;
+  margin: 0 auto 12px;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.figure {
+  max-width: 920px;
+  margin: 0 auto 56px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px 28px 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.figure-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 24px;
+}
+
+.caption {
+  margin-top: 16px;
+  font-size: 0.92rem;
+  color: var(--sub);
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.caption b { color: var(--ink); }
+
+/* ---------- Gantt chart (built from divs) ---------- */
+.gantt {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gantt-row {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  align-items: center;
+  gap: 12px;
+  min-height: 34px;
+}
+
+.gantt-label {
+  font-size: 0.85rem;
+  text-align: right;
+  color: var(--ink);
+}
+
+.gantt-track {
+  position: relative;
+  height: 26px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--line) 0,
+    var(--line) 1px,
+    transparent 1px,
+    transparent calc(100% / var(--divisions))
+  );
+}
+
+.gantt-bar {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0 6px;
+}
+
+.gantt-bar.label-outside {
+  color: var(--sub);
+  justify-content: flex-start;
+  background-clip: padding-box;
+}
+.gantt-bar.label-outside .tag {
+  position: absolute;
+  left: 100%;
+  margin-left: 8px;
+  color: var(--sub);
+  white-space: nowrap;
+}
+
+.bar-teal   { background: var(--teal); }
+.bar-coral  { background: var(--coral); }
+.bar-amber  { background: var(--amber); }
+.bar-purple { background: var(--purple); }
+.bar-gray   { background: var(--gray); }
+.bar-red    { background: var(--red); }
+
+.gantt-axis {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.gantt-axis-track {
+  position: relative;
+  height: 18px;
+}
+
+.gantt-axis-tick {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: 0.78rem;
+  color: var(--sub);
+}
+
+.gantt-axis-title {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--sub);
+  margin-top: 6px;
+}
+
+.gantt-legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 20px;
+  font-size: 0.82rem;
+  color: var(--sub);
+}
+
+.gantt-legend .swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* ---------- Flow / structure diagrams (SVG classes) ---------- */
+.node-box {
+  stroke-width: 1;
+  rx: 8;
+}
+.node-box.uefi   { fill: #dcebfa; stroke: #2e6da4; }
+.node-box.windows{ fill: #dff3e8; stroke: #2e8b57; }
+.node-box.neutral{ fill: #f3f1ec; stroke: #9a9488; }
+
+.node-title.uefi    { fill: #1b4f72; }
+.node-title.windows { fill: #1b5e3a; }
+.node-title.neutral { fill: #3a352c; }
+
+.node-sub.uefi    { fill: #1b4f72; }
+.node-sub.windows { fill: #1b5e3a; }
+.node-sub.neutral { fill: #3a352c; }
+
+.node-title {
+  font-size: 15px;
+  font-weight: 700;
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-anchor: middle;
+}
+.node-sub {
+  font-size: 12px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-anchor: middle;
+}
+.flow-arrow {
+  stroke: #666666;
+  stroke-width: 1.5;
+}
+.flow-note {
+  font-size: 12px;
+  fill: var(--sub);
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-anchor: middle;
+}
+.container-box {
+  fill: #f3f1ec;
+  stroke: #9a9488;
+  stroke-width: 1;
+  rx: 20;
+}
+.container-title {
+  font-size: 15px;
+  font-weight: 700;
+  fill: #3a352c;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
