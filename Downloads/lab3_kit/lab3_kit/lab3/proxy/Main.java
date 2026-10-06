@@ -1,10 +1,12 @@
-// Protection Proxy - Bank account (initial implementation)
+// Protection Proxy - Bank account (AI-assisted version, reviewed and corrected)
+// Added: audit logging, injection of the BankAccount interface, injected AuditLog.
 
 public class Main {
     public static void main(String[] args) {
-        RealBankAccount real = new RealBankAccount(1000);
-        BankAccount asOwner  = new ProtectedBankAccount(real, new User("Owner", Role.OWNER));
-        BankAccount asViewer = new ProtectedBankAccount(real, new User("Guest", Role.VIEWER));
+        BankAccount real = new RealBankAccount(1000);
+        AuditLog log = new ConsoleAuditLog();
+        BankAccount asOwner  = new ProtectedBankAccount(real, new User("Owner", Role.OWNER), log);
+        BankAccount asViewer = new ProtectedBankAccount(real, new User("Guest", Role.VIEWER), log);
         System.out.println("Balance (viewer): " + asViewer.getBalance());
         asOwner.withdraw(200);
         try { asViewer.withdraw(100); }
@@ -22,9 +24,9 @@ class User {
     String getName() { return name; }
 }
 
-interface BankAccount { void withdraw(double amount); double getBalance(); }   // Subject
+interface BankAccount { void withdraw(double amount); double getBalance(); }
 
-class RealBankAccount implements BankAccount {                                  // RealSubject
+class RealBankAccount implements BankAccount {
     private double balance;
     RealBankAccount(double balance) { this.balance = balance; }
     public void withdraw(double amount) {
@@ -35,12 +37,27 @@ class RealBankAccount implements BankAccount {                                  
     public double getBalance() { return balance; }
 }
 
-class ProtectedBankAccount implements BankAccount {                             // Proxy
-    private final RealBankAccount account; private final User user;
-    ProtectedBankAccount(RealBankAccount account, User user) { this.account = account; this.user = user; }
-    public void withdraw(double amount) {
-        if (user.hasRole(Role.OWNER)) account.withdraw(amount);
-        else throw new SecurityException("OWNER role required");
+interface AuditLog { void record(User user, String action, double amount, boolean allowed); }
+
+class ConsoleAuditLog implements AuditLog {
+    public void record(User u, String action, double amount, boolean allowed) {
+        System.out.println("AUDIT: " + u.getName() + " " + action + " " + amount
+                + " -> " + (allowed ? "ALLOWED" : "DENIED"));
     }
-    public double getBalance() { return account.getBalance(); }                 // open to all
+}
+
+class ProtectedBankAccount implements BankAccount {
+    private final BankAccount target;                                // program to the interface
+    private final User user;
+    private final AuditLog audit;
+    ProtectedBankAccount(BankAccount target, User user, AuditLog audit) {
+        this.target = target; this.user = user; this.audit = audit;
+    }
+    public void withdraw(double amount) {
+        boolean ok = user.hasRole(Role.OWNER);
+        audit.record(user, "withdraw", amount, ok);                  // every attempt is logged, allowed or not
+        if (!ok) throw new SecurityException("OWNER role required");
+        target.withdraw(amount);
+    }
+    public double getBalance() { return target.getBalance(); }       // open to all
 }
