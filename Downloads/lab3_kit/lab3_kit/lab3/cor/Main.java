@@ -1,27 +1,46 @@
-// Chain of Responsibility - Expense approval (initial implementation)
+// Chain of Responsibility - Expense approval (AI-assisted version, reviewed and corrected)
+// Added: CFO (200000), logging fallback, constructor injection, typed Decision.
 
 public class Main {
     public static void main(String[] args) {
-        Approver lead = new TeamLead(), mgr = new Manager(), dir = new Director();
-        lead.setNext(mgr); mgr.setNext(dir);                         // wiring is the caller's job
-        ExpenseRequest req = new ExpenseRequest();
-        req.amount = 4200; req.purpose = "Team offsite";
-        lead.approve(req);                                           // prints: Manager: Team offsite
+        Approver chain = new TeamLead(new Manager(new Director(new CFO(new LoggingFallback()))));
+        System.out.println(chain.approve(new ExpenseRequest(4_200, "Team offsite")));
+        System.out.println(chain.approve(new ExpenseRequest(150_000, "New servers")));
+        System.out.println(chain.approve(new ExpenseRequest(900_000, "Office building")));
     }
 }
 
-class ExpenseRequest { double amount; String purpose; }
+enum Decision { APPROVED, DENIED }
+
+class ExpenseRequest {
+    final double amount; final String purpose;
+    ExpenseRequest(double amount, String purpose) { this.amount = amount; this.purpose = purpose; }
+}
 
 abstract class Approver {
-    protected Approver next;
-    protected double limit;
-    protected String role;
-    public void setNext(Approver n) { this.next = n; }
-    public void approve(ExpenseRequest r) {                          // handle or forward
-        if (r.amount <= limit) System.out.println(role + ": " + r.purpose);
-        else if (next != null) next.approve(r);
+    private final String role;
+    private final double limit;
+    private final Approver next;
+    Approver(String role, double limit, Approver next) {
+        this.role = role; this.limit = limit; this.next = next;
+    }
+    public Decision approve(ExpenseRequest r) {                      // handle or forward
+        if (r.amount <= limit) {
+            System.out.println(role + " approved: " + r.purpose + " (" + r.amount + ")");
+            return Decision.APPROVED;
+        }
+        return (next != null) ? next.approve(r) : Decision.DENIED;
     }
 }
-class TeamLead extends Approver { TeamLead() { limit = 1000;  role = "TeamLead"; } }
-class Manager  extends Approver { Manager()  { limit = 5000;  role = "Manager"; } }
-class Director extends Approver { Director() { limit = 50000; role = "Director"; } }
+class TeamLead extends Approver { TeamLead(Approver n) { super("TeamLead", 1_000, n); } }
+class Manager  extends Approver { Manager(Approver n)  { super("Manager", 5_000, n); } }
+class Director extends Approver { Director(Approver n) { super("Director", 50_000, n); } }
+class CFO      extends Approver { CFO(Approver n)      { super("CFO", 200_000, n); } }
+
+class LoggingFallback extends Approver {                             // end of chain: nobody could approve
+    LoggingFallback() { super("Fallback", 0, null); }
+    @Override public Decision approve(ExpenseRequest r) {
+        System.out.println("UNAPPROVED: " + r.purpose + " (" + r.amount + ") exceeds every limit");
+        return Decision.DENIED;
+    }
+}
